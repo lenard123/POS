@@ -3,9 +3,10 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Conf;
+use App\Http\Controllers\Util;
 
-class Password implements Rule
+class AccountType implements Rule
 {
     /**
      * Create a new rule instance.
@@ -26,7 +27,7 @@ class Password implements Rule
      */
     public function passes($attribute, $value)
     {
-        return Hash::check($value, request()->user()->password);
+        return Util::getTypes($value) ? true: false;
     }
 
     /**
@@ -36,6 +37,6 @@ class Password implements Rule
      */
     public function message()
     {
-        return ':attribute not match';
+        return 'The validation error message.';
     }
 }

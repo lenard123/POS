@@ -30,10 +30,12 @@
     </div>    
 
     @if (request()->user()->type == $conf::ROLE_ADMIN)
-    <div class="nav-item">
-        <img height="56" width="56" src="{{asset('icon/user.png')}}" />
-        <br>
-        <span>ACCOUNT</span>
+    <div class="nav-item" id="account">
+        <a href="{{ route('account') }}">
+            <img height="56" width="56" src="{{asset('icon/user.png')}}" />
+            <br>
+            <span>ACCOUNT</span>
+        </a>
     </div>
     @endif
 

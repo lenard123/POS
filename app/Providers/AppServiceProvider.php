@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Http\Controllers\Conf;
+use App\Http\Controllers\Util;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->share('conf', Conf::class);
+        view()->share('util', Util::class);
     }
 
     /**

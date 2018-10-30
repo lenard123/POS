@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Database\QueryException;
 
 class Handler extends ExceptionHandler
 {
@@ -46,6 +47,21 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+
+        if ($exception instanceof QueryException) {
+            switch ($exception->getCode()) {
+                case 2002:
+                    return $this->sendError('Theres a problem with your database connection.', '0001');
+                    break;
+            }
+        }
+
+
         return parent::render($request, $exception);
+    }
+
+    private function sendError($message, $code)
+    {
+        return response()->view('error', ['message'=>$message, 'code'=>$code]);
     }
 }

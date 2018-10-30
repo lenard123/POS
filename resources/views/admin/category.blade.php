@@ -58,8 +58,8 @@
         <td>{{ $category->name }}</td>
         @if (request()->user()->type == $conf::ROLE_ADMIN)
         <td>
-            <button class="px-1 pt-1 pb-1 btn btn-primary" onclick="update('{{ $category->name }}', '{{ $category->id }}')">Edit</button>
-            <button class="px-1 pt-1 pb-1 btn btn-danger delete" id="{{ $category->id }}">Delete</button>
+            <button class="pt-0 pb-0 btn btn-primary" onclick="update('{{ $category->name }}', '{{ $category->id }}')">Edit</button>
+            <button class="pt-0 pb-0 btn btn-danger delete" id="{{ $category->id }}">Delete</button>
         </td>
         @endif
     </tr>

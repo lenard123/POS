@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Conf;
 
 class RedirectIfAuthenticated
 {
@@ -18,9 +19,17 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+            return $this->redirectTo($request);
         }
 
         return $next($request);
+    }
+
+    private function redirectTo ($request)
+    {
+        if ($request->user()->type == Conf::ROLE_CASHIER)
+            return redirect()->route('cashier');
+        else
+            return redirect()->route('admin');
     }
 }

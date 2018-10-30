@@ -12,6 +12,7 @@
 @section('body')
 
 @include('template.success')
+@include('template.errors')
 
 <h1>Product List</h1>
 
@@ -43,9 +44,9 @@
                 <td>{{ $product->quantity }}</td>
                 <td>{{ $product->price }}</td>
                 <td>
-                    <button class="px-1 pt-1 pb-1 btn btn-info">Add Stocks</button>
-                    <button class="px-1 pt-1 pb-1 btn btn-primary">Update</button>
-                    <button class="px-1 pt-1 pb-1 btn btn-danger">Delete</button>
+                    <a class="pt-0 pb-0 btn btn-info" href="{{ route('addstock', ['id'=>$product->id]) }}">Add Stocks</a>
+                    <a class="pt-0 pb-0 btn btn-primary" href="{{ route('updateproduct', ['id'=>$product->id]) }}">Update</a>
+                    <button class="pt-0 pb-0 btn btn-danger delete" id="{{ $product->id }}">Delete</button>
                 </td>
             </tr>
             @endforeach
@@ -54,5 +55,46 @@
 </div>
 
 {{ $products->links() }}
+
+@component('template.modal', ['id'=>'delete_modal'])
+
+    @slot('header')
+        Delete Product?
+    @endslot
+
+    Are you sure to delete this product?
+
+    <form id="delete_form" method="POST">
+        @method('DELETE')
+        @csrf
+        <div class="form-group">
+            <label for="password">
+                <strong>For security reason</strong>
+            </label>
+            <input type="password" name="password" class="form-control" id="password" required placeholder="Enter your password">
+        </div>
+        <input type="submit" class="d-none">
+    </form>
+
+
+    @slot('footer')
+        <button class="btn btn-danger" onclick="$('#delete_form').submit()">Delete</button>
+        <button class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+    @endslot
+@endcomponent
+
+@endsection
+
+
+
+@section('script')
+
+<script>
+$('.delete').click(function(){
+    var action = '{{ route("addproduct") }}/'+this.id;
+    $('#delete_form').attr('action', action);
+    $('#delete_modal').modal();
+});
+</script>
 
 @endsection

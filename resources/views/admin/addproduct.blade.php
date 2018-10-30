@@ -20,7 +20,7 @@
 
 <div class="form-group">
     <label for="code">Product Code</label>
-    <input type="text" name="code" id="code" class="form-control" required value="{{ old('code') }}">
+    <input type="text" name="code" id="code" class="form-control" placeholder="XXX-XXX-XXX" required value="{{ old('code') }}">
 </div>
 
 <div class="form-group">

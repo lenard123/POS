@@ -21,4 +21,17 @@ class GetController extends Controller
         return view('admin.addproduct', $data);
     }
 
+    public function addStock ($id)
+    {
+        $data['product'] = Product::find($id);
+        return view('admin.addstock', $data);
+    }
+
+    public function update ($id)
+    {
+        $data['product'] = Product::find($id);
+        $data['categories'] = Category::all();
+        return view('admin.updateproduct', $data);
+    }
+
 }
