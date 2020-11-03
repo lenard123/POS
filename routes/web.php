@@ -12,7 +12,13 @@
 */
 
 Route::middleware('auth')->group(function () {
-    Route::view('/', 'cashier.index')->name('cashier');
+
+    Route::middleware('cashier')->group(function () {
+        Route::view('/', 'cashier.index')->name('cashier');
+        Route::get('/search', 'Product\SearchController@search')->name('search');
+        Route::view('/process', 'cashier.process')->name('process');
+    });
+
 
     Route::middleware('admin')->group(function () {
         Route::get('/admin', 'Product\GetController@index')->name('admin');
@@ -36,8 +42,11 @@ Route::middleware('auth')->group(function () {
         Route::put('/admin/account/password', 'User\ChangePasswordController@changePassword');
     });
 
-
-
+    /***
+     * Route::post('/process', function (Request $request) {
+     *   dd(request('carts'));
+     * })->name('process_order');
+     ***/
     Route::get('/logout', 'User\LogoutController@logout')->name('logout');
 });
 

@@ -156,34 +156,35 @@
         </div>
 
     </div>
+
+    @component('template.modal', ['id'=>'delete_modal'])
+
+        @slot('header')
+            Delete User?
+        @endslot
+
+        Are you sure to delete this user?
+
+        <form id="delete_form" method="POST">
+            @method('DELETE')
+            @csrf
+            <div class="form-group">
+                <label for="password">
+                    <strong>For security reason</strong>
+                </label>
+                <input type="password" name="password" class="form-control" id="password" required placeholder="Enter your password">
+            </div>
+            <input type="submit" class="d-none">
+        </form>
+
+
+        @slot('footer')
+            <button class="btn btn-danger" onclick="$('#delete_form').submit()">Delete</button>
+            <button class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+        @endslot
+    @endcomponent
+
 @endsection
-
-@component('template.modal', ['id'=>'delete_modal'])
-
-    @slot('header')
-        Delete User?
-    @endslot
-
-    Are you sure to delete this user?
-
-    <form id="delete_form" method="POST">
-        @method('DELETE')
-        @csrf
-        <div class="form-group">
-            <label for="password">
-                <strong>For security reason</strong>
-            </label>
-            <input type="password" name="password" class="form-control" id="password" required placeholder="Enter your password">
-        </div>
-        <input type="submit" class="d-none">
-    </form>
-
-
-    @slot('footer')
-        <button class="btn btn-danger" onclick="$('#delete_form').submit()">Delete</button>
-        <button class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
-    @endslot
-@endcomponent
 
 @section('script')
 

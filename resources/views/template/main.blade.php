@@ -14,12 +14,14 @@
     <!-- Bootstrap JS 4 Minified -->
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
+    @yield('head')
+
 </head>
 <body>
 
 @yield('nav')
 
-<main class="py-4">
+<main class="py-4" id="@yield('main_id', 'admin')">
 @yield('body')
 </main>
 

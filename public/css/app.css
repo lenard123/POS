@@ -52,15 +52,76 @@ nav > .nav-item.active {
 }
 
 
-main {
+main#admin {
     margin-left: 120px;
     padding-right: 20px;
     height: 550px;
     overflow: auto;
 }
 
+main#cashier {
+    padding: 0px 40px;
+}
+
 .alert > ul {
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+
+.cart-container {
+    height: 460x;
+    border: 1px solid black;
+}
+
+.cart-table thead{
+    border-top-left-radius: 10px;
+}
+
+.cart-table thead th{
+    padding: 3px;
+}
+
+.cart-table{
+    height: 250px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid black;
+}
+
+.cart-info {
+    padding: 10px;
+}
+
+.cart-info .form {
+    border-right: 1px solid black;
+}
+
+.search {
+    position: relative;
+    z-index: 3;
+}
+
+.search:hover #suggestions{
+    display: block !important;
+}
+
+#suggestions {
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    box-shadow: 1px 1px 5px black;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    max-height: 150px;
+    overflow: auto;
+}
+
+#suggestions .item {
+    padding: 5px;
+}
+
+#suggestions .item:hover{
+    background-color: gray;
 }
