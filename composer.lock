@@ -573,7 +573,7 @@
                 "ext-json": "*",
                 "ext-mbstring": "*",
                 "ext-openssl": "*",
-                "league/flysystem": "^1.1.4",
+                "league/flysystem": "^1.0.8",
                 "monolog/monolog": "^1.12",
                 "nesbot/carbon": "^1.26.3 || ^2.0",
                 "opis/closure": "^3.1",
