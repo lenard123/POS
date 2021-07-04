@@ -7,7 +7,10 @@
 - Composer 
 
 ## Features
-
+- Login
+- Can Add/Update/Remove Product Category
+- Can Add/Update/Remove Products
+- Manage Account
 
 ## Setting UP
 
